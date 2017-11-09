@@ -26,8 +26,8 @@ ui <- dashboardPage(
     
     # Define CSS style for the estimation button
     tags$head(tags$style(HTML('
-                              .estimation_button {background-color: #ffab00; width: 100%}
-                              .estimation_button:hover {background-color: #ff8f00}
+                              .estimation_button {background-color: #33CE67; width: 100%}
+                              .estimation_button:hover {background-color: #1DAA4C}
                               '))),
     
     # Define content for each page
@@ -59,18 +59,42 @@ ui <- dashboardPage(
                   title = "Estimation Parameters",
                   status = "primary",
                   solidHeader = TRUE,
+#                   data_sets <- c("mtcars", "morley", "rock")                  
+#                   selectInput("dataset", "Data set", as.list(data_sets))
+                  selectInput("dataset", "Select a dataset",
+                              c("Dataset 1" = "Dataset_1",
+                                "Dataset 2" = "Dataset_2",
+                                "Dataset 3" = "Dataset_3")),
                   
                   radioButtons("model", "Choose a function:",
                                c("Linear function" = "linear",
-                                 "Quadratic function" = "quadratic")),
+                                 "Quadratic function" = "quadratic",
+                                  "Root function" = "root",
+                                  "Polynomial 3rd degree" = "polynomial_3")),
                   
-                  actionButton("trigger_estimation","Start estimation",
+                  actionButton("trigger_estimation","Estimate",
                                icon("play"),
                                class="estimation_button"
                                )
                   )
+                ),
+
+              fluidRow(
+                # Add box for residual plot 
+                box(
+                  status = "primary",
+                  width = 6,
+                  plotOutput("residual_plot")
+                ),
+                
+                # Add box for residual histogram 
+                box(
+                  status = "primary",
+                  width = 6,
+                  plotOutput("residuals_histogram")
                 )
-              ),
+              )
+      ),
 
       # Data Page
       tabItem(tabName = "data",
