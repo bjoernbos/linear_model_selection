@@ -53,13 +53,10 @@ ui <- dashboardPage(
                   title = "Estimation Parameters",
                   status = "primary",
                   solidHeader = TRUE,
-#                   data_sets <- c("mtcars", "morley", "rock")                  
-#                   selectInput("dataset", "Data set", as.list(data_sets))
-                  selectInput("dataset", "Select a dataset",
-                              c("Dataset 1" = "Dataset_1",
-                                "Dataset 2" = "Dataset_2",
-                                "Dataset 3" = "Dataset_3")),
-                  
+               
+                  # Users can choose between each dataset expect for the x variable
+                  selectInput("dataset", "Select a dataset", names(data[,-1])),
+
                   radioButtons("model", "Choose a function:",
                                c("Linear function" = "linear",
                                  "Quadratic function" = "quadratic",

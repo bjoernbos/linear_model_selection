@@ -22,13 +22,13 @@ shinyServer(function(input, output) {
         estimation <- lm(data[, input$dataset] ~ data$x)
       }
       else if (input$model == "quadratic"){
-        estimation <- lm(data[, input$dataset] ~ data$x + data$x2)
+        estimation <- lm(data[, input$dataset] ~ data$x + data_helper$x2)
       }
       else if (input$model == "root"){
-        estimation <- lm(data[, input$dataset] ~ data$sqrt_x)
+        estimation <- lm(data[, input$dataset] ~ data_helper$sqrt_x)
       }
       else {
-        estimation <- lm(data[, input$dataset] ~ data$x + data$x2 + data$x3)
+        estimation <- lm(data[, input$dataset] ~ data$x + data_helper$x2 + data_helper$x3)
       }
       
       # Increase progress bar to 0.8  
