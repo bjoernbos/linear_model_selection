@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+.Rapp.history
+example_shiny_ui_ux.Rproj
