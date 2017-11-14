@@ -1,4 +1,4 @@
-# Import data
+#Import data
 data <- read.csv("data.csv", sep=";", dec=",")
 
 # Compute more values from x variable for lm estimations

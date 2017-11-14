@@ -1,9 +1,7 @@
 #
-# This ShinyApp shows primarily how to improve the UI
-# and UX of ShinyApps in general.
+# This ShinyApp shows how to evaluate and compare
+# the quality of linear models.
 #
-# Technically, it can be used to estimate a quadratic function.
-# 
 
 # Use ShinyDashboard
 library(shinydashboard)
@@ -11,7 +9,7 @@ library(shinydashboard)
 ui <- dashboardPage(
   
   # Define Header and Sidebar
-  dashboardHeader(title = "Estimation"),
+  dashboardHeader(title = "Linear Models"),
   
   dashboardSidebar(
     sidebarMenu(
@@ -39,6 +37,8 @@ ui <- dashboardPage(
                 
                 # Add box for graph 
                 box(
+                  title = "Estimation Plot",
+                  solidHeader = TRUE,
                   status = "primary",
                   width = 9,
                   plotOutput("plot")
@@ -46,13 +46,7 @@ ui <- dashboardPage(
                 
                 # Add box for Accuracy
                 valueBoxOutput("accuracy_box", width = 3),
-                
-                # # Add box for Accuracy
-                # infoBox(
-                #   width = 3,
-                #   "Accuracy", textOutput("estimation_results"),
-                #   icon = icon("tachometer")),
-                
+
                 # Add box for estimation parameters
                 box(
                   width = 3,
@@ -79,18 +73,29 @@ ui <- dashboardPage(
                   )
                 ),
 
+              h3("Analysis of Residuals"),
               fluidRow(
                 # Add box for residual plot 
                 box(
+                  title = "Residual Plot",
+                  solidHeader = TRUE,
+                  collapsible = TRUE,
                   status = "primary",
-                  width = 6,
+                  width = 12,
+                  textOutput("residuals_mean"),
                   plotOutput("residual_plot")
-                ),
+                )),
                 
+
+                fluidRow(
                 # Add box for residual histogram 
                 box(
+                  title = "Histogram of Residuals",
+                  solidHeader = TRUE,
+                  collapsible = TRUE,
                   status = "primary",
-                  width = 6,
+                  width = 12,
+                  htmlOutput("residuals_minmax"),
                   plotOutput("residuals_histogram")
                 )
               )

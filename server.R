@@ -1,23 +1,18 @@
 #
-# This ShinyApp shows primarily how to improve the UI
-# and UX of ShinyApps in general.
+# This ShinyApp shows how to evaluate and compare
+# the quality of linear models.
 #
-# Technically, it can be used to estimate a quadratic function.
-# 
 
 library(shiny)
-
 
 shinyServer(function(input, output) {
   
   # Reactive value that triggers plot update and stores fitted values
-  v <- reactiveValues(doPlot = FALSE,
-                      fitted_values = NULL,
+  v <- reactiveValues(fitted_values = NULL,
                       r2 = NULL)
 
   # When action button was triggered...
   observeEvent(input$trigger_estimation, {
-
     # Add progress bar
     withProgress(message = 'Please wait',
                  detail = 'Run estimation...', value = 0.6,
@@ -45,11 +40,6 @@ shinyServer(function(input, output) {
       
       # Increase progress bar to 1
       incProgress(1, detail="Finish")
-      
-      # Trigger plot update
-      v$doPlot <- input$trigger_estimation
-      
-    
     })
   })
   
@@ -66,10 +56,8 @@ shinyServer(function(input, output) {
       )	
     })
   
-  
   # Overview Plot
   output$plot <- renderPlot({
-    
       plot(data$x, data[, input$dataset],
            main = "Estimation of random points",
            xlab = "x variable",
@@ -81,24 +69,46 @@ shinyServer(function(input, output) {
     
   })
   
+  # Residual Summary
+  output$residuals_mean <- renderText(
+    if (is.null(v$fitted_values)) "No estimation has been computed, yet"
+    else paste("Mean:", round(mean(v$residuals),4))
+  )
+  
+  output$residuals_minmax <- renderUI(
+    if (is.null(v$fitted_values)) "No estimation has been computed, yet"
+    else {
+      str1 <- paste("Min value:", round(min(v$residuals),4))
+      str2 <- paste("Max value:", round(max(v$residuals),4))
+      HTML(paste(str1, str2, sep = '<br/>'))
+    }
+  )
+  
   # Residual plot
-  output$residual_plot <- renderPlot({
-    
-    plot(data$x, v$residuals,
-         main = "Residuals",
-         xlab = "x variable",
-         ylab = "residuals")
-  })  
+  output$residual_plot <- renderPlot(
+    if (is.null(v$fitted_values)) return()
+    else {
+      plot(data$x, v$residuals,
+           xlab = "x variable",
+           ylab = "Residuals")
+      abline(h=0,
+             col="red")
+    }
+  )  
   
   # Residual histogram
-  output$residuals_histogram <- renderPlot({
-    
-    hist(v$residuals,
-         main = "Histogram of Residuals",
-         xlab = "x variable",
-         ylab = "y variable")
-  })
-  
+  output$residuals_histogram <- renderPlot(
+    if (is.null(v$fitted_values)) return()
+    else {
+      hist(v$residuals,
+           breaks = 20,
+           main = "",
+           xlab = "Residuals",
+           ylab = "Frequency")
+      abline(v=0,
+             col="red")
+    }
+  )
 
   # Show Data Table
   output$data_table <- renderDataTable(data)
