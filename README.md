@@ -1,10 +1,21 @@
-# ShinyApps to figure out the best univariate linear model
+# ShinyApp to figure out the best univariate linear model
+<img src="https://img.shields.io/badge/build-passing-green.svg">
 This repository contains the ShinyApp of my Medium article on ["How to select the best univariate linear regression for your ML model"](https://medium.com/@B..Hartmann).
 
-![screencast](https://github.com/bjoernhartmann/example_shiny_better_ui_ux/blob/master/Screencast.gif)
+![screencast](https://github.com/bjoernhartmann/linear_model_selection/blob/master/Screencast.gif)
             
 ## How to use it
 Use this app as a companion to my article on ["How to select the best univariate linear regression for your ML model"](https://medium.com/@B..Hartmann). In addition, you can use it as a framework to evaluate your own dataset or models.
+
+## Features
+Different performance indicator indicate how well your model performs. I personally use the following for univariate models:
+
+### Adjusted R2
+The adjusted R2 indicate, how much variation is explained by your model. Instead of the simple R2, the adjusted R2 takes the number of input factors into consideration. It penalises too many input factors in order to favor parsimonious models.
+
+### Residuals
+The residuals should be equally distributed around zero. Otherwise, the model has an upward or downward bias in certain areas. Use them also to examine whether your dataset exhibits heteroscedacity.
+Finally, the residuals indicate the bandwidth in which your model errors are. 
 
 ## Build With
 * [R Shiny](https://shiny.rstudio.com)
