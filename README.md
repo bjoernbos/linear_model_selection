@@ -1,11 +1,13 @@
-# Example for better UI and UX of your ShinyApps
-This repository contains the ShinyApp of my Medium article on ["Title"](https://medium.freecodecamp.org).
+# ShinyApps to figure out the best univariate linear model
+This repository contains the ShinyApp of my Medium article on ["How to select the best univariate linear regression for your ML model"](https://medium.com/@B..Hartmann).
 
-## Getting Started
-You can deploy this app directly after downloading. Assuming that you have installed R and Shiny, you do not need to install any further packages.
+![screencast](https://github.com/bjoernhartmann/example_shiny_better_ui_ux/blob/master/Screencast.gif)
+            
+## How to use it
+Use this app as a companion to my article on ["How to select the best univariate linear regression for your ML model"](https://medium.com/@B..Hartmann). In addition, you can use it as a framework to evaluate your own dataset or models.
 
 ## Build With
-* [R](https://cran.r-project.org) Version 3.4.0
+* [R Shiny](https://shiny.rstudio.com)
 
 ## Author
-* Björn Hartmann - [Medium Profile](https://medium.com/@B..Hartmann)
+* Björn Hartmann - [Twitter](https://twitter.com/bjoernhartmann_) | [Medium](https://medium.com/@B..Hartmann)
