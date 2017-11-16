@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About this App</title>
+  </head>
+  <body>
+    <center>
+    <h2>About this App</h2>
+    </center>
+
+    <p>This app is supposed to help users practicing how to chose the best performing
+      linear model for a given dataset. It supplements an article on how to select a
+      linear regression for univariate models.</p>
+
+    <h2>Performance Indicators</h2>
+    <p>Although there are various performance indictors, I personally recommend to have a look at two factors:<p>
+
+    <h3>Adjusted R2</h3>
+    <p>This indicator illustrates how much variation is explained by your model.
+      In contrast to the simple R2, the adjusted R2 takes the number of input factors
+      into account. It penalises too many input factors and favours parsimonious models.</p>
+
+    <h3>Residuals</h3>
+    <p>The residuals are the difference between your predicted values and the actual values.
+      Their benefit is that they can show you both the magnitude as well as the direction of your errors.</p>
+
+    <p>With the residual plot you can determine if your model has areas with an upward- or
+      downward bias. Neither of them should occur systematically. So make sure your residuals
+      are equally distributed around zero.</p>
+
+    <p>Finally, the residual's histrogram shows the bandwidth of your errors and illustrates how certain your predictions are.</p>
+
+    <br>
+    <h2>Developer and Contribution</h2>
+    <p>This side project has been made by Björn Hartmann. Feel free to <a href="http://www.bjoern-hartmann.de/?utm_source=ShinyApp&utm_medium=link&utm_campaign=ShinyApp_Select_Linear_Model&utm_term=ShinyApp_Select_Linear_Model">contact me</a> or contribute to this project on <a href="https://github.com/bjoernhartmann/linear_model_selection">Github</a>.</p>
+  </body>
+</html>

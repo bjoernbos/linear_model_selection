@@ -106,8 +106,7 @@ ui <- dashboardPage(
       
       # About Page
       tabItem(tabName = "about",
-              h2("About this App"),
-              p("More is comming soon")
+              includeHTML("about.html")
       )
     )
   )
