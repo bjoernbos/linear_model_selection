@@ -1,12 +1,14 @@
 # ShinyApp to figure out the best univariate linear model
 <img src="https://img.shields.io/badge/build-passing-green.svg">
 
-This repository contains the ShinyApp of my Medium article on ["How to select the best performing linear regression for univariate models"](https://medium.com/@B..Hartmann).
+This repository contains the ShinyApp of my Medium article on ["How to select the best performing linear regression for univariate models"](https://medium.freecodecamp.org/learn-how-to-select-the-best-performing-linear-regression-for-univariate-models-e9d429c40581).
 
 ![screencast](https://github.com/bjoernhartmann/linear_model_selection/blob/master/Screencast.gif)
 
+[Live Version](https://bjoernhartmann.shinyapps.io/linear_model_selection/)
+
 ## How to use it
-Use this app as a companion to my article on ["How to select the best performing linear regression for univariate models"](https://medium.com/@B..Hartmann). In addition, you can use it as a framework to evaluate your own dataset or models.
+Use this app as a companion to my article on ["How to select the best performing linear regression for univariate models"](https://medium.freecodecamp.org/learn-how-to-select-the-best-performing-linear-regression-for-univariate-models-e9d429c40581). In addition, you can use it as a framework to evaluate your own dataset or models.
 
 ## Features
 Different performance indicator indicate how well your model performs. I personally use the following for univariate models:
